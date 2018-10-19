@@ -53,3 +53,19 @@ Fields existence
         assertTrue(ottomatikSignUpPage.getSubdomainErrorText().contains("domain"));
 
     }
+
+    /*
+    Successfull Sign Up
+     */
+
+    @Test
+    public void testSuccessfullSignUp() throws InterruptedException {
+        ottomatikSignUpPage.EnterSubDomain("test973");
+        ottomatikSignUpPage.EnterEmail("test496@test.com");
+        ottomatikSignUpPage.EnterPassword("123456");
+        Thread.sleep(1000);
+        ottomatikSignUpPage.ClickCheckbox();
+        ottomatikSignUpPage.ClickSignUpButton();
+        Thread.sleep(2000);
+        assertTrue(ottomatikSignUpPage.getCurrentUrl().contains("create"));
+    }
