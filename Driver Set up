@@ -1,0 +1,18 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SetUpDriver {
+
+    public WebDriver driver;
+
+    public void setup() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
+
+    public void closeBrowser(){
+        driver.close();
+        driver.quit();
+    }
+}
