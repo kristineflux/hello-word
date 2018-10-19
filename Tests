@@ -1,0 +1,55 @@
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertTrue;
+
+
+public class OttomatikSignUpTest extends SetUpDriver {
+
+
+    public OttomatikSignUpPage ottomatikSignUpPage;
+
+    @BeforeMethod
+    public void beforeMethod() {
+        setup();
+        ottomatikSignUpPage = new OttomatikSignUpPage(driver);
+        ottomatikSignUpPage.visitSignUpPage();
+    }
+
+    @AfterMethod
+    public void afterMethod(){
+        closeBrowser();
+    }
+
+/*
+Fields existence
+ */
+
+    @Test
+    public void testAllFieldsDisplayed() {
+        assertTrue(ottomatikSignUpPage.isSubdomainDisplayed());
+        assertTrue(ottomatikSignUpPage.isEmailDisplayed());
+        assertTrue(ottomatikSignUpPage.isPasswordDisplayed());
+        assertTrue(ottomatikSignUpPage.isCheckboxDisplayed());
+        assertTrue(ottomatikSignUpPage.isSignUpButtonDisplayed());
+        assertTrue(ottomatikSignUpPage.isSignInButtonDisplayed());
+    }
+
+    /*
+    Unique Subdomain
+     */
+
+    @Test
+    public void testSubdomainUniqueness() throws InterruptedException {
+        ottomatikSignUpPage.EnterSubDomain("test");
+        ottomatikSignUpPage.EnterEmail("Test9@test.com");
+        ottomatikSignUpPage.EnterPassword("123456");
+        Thread.sleep(1000);
+        ottomatikSignUpPage.ClickCheckbox();
+        ottomatikSignUpPage.ClickSignUpButton();
+        Thread.sleep(1000);
+        assertTrue(ottomatikSignUpPage.isSubdomainErrorDisplayed());
+        assertTrue(ottomatikSignUpPage.getSubdomainErrorText().contains("domain"));
+
+    }
