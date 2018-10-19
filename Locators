@@ -1,0 +1,13 @@
+import org.openqa.selenium.By;
+
+public class OttomatikSignUpPageLocators {
+
+    public final static By subdomain = By.xpath("( //*[@class = 'form-control'])[1]");
+    public final static By email = By.xpath("( //*[@class = 'form-control'])[2]");
+    public final static By password = By.xpath("( //*[@class = 'form-control'])[3]");
+    public final static By checkbox = By.className("fa") ;
+    public final static By signup = By.className("btn-success");
+    public final static By signin = By.className("btn-link");
+    public final static By subdomainerror = By.className("alert-danger");
+
+}
