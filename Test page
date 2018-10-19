@@ -1,0 +1,47 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class OttomatikSignUpPage extends BasePage {
+
+    public WebDriver driver;
+
+
+    public OttomatikSignUpPage(WebDriver driver) {
+        super(driver);
+    }
+
+
+    public void visitSignUpPage() {
+        visit(baseURL + "/signup");
+    }
+
+
+    public boolean isSubdomainDisplayed() {
+        WebElement element = find(OttomatikSignUpPageLocators.subdomain);
+        return isDisplayed(element);
+    }
+
+    public boolean isEmailDisplayed() {
+        WebElement element = find(OttomatikSignUpPageLocators.email);
+        return isDisplayed(element);
+    }
+
+    public boolean isPasswordDisplayed() {
+        WebElement element = find(OttomatikSignUpPageLocators.password);
+        return isDisplayed(element);
+    }
+
+    public boolean isCheckboxDisplayed() {
+        WebElement element = find(OttomatikSignUpPageLocators.checkbox);
+        return isDisplayed(element);
+    }
+
+    public boolean isSignUpButtonDisplayed() {
+        WebElement element = find(OttomatikSignUpPageLocators.signin);
+        return isDisplayed(element);
+    }
+
+    public boolean isSignInButtonDisplayed() {
+        WebElement element = find(OttomatikSignUpPageLocators.signup);
+        return isDisplayed(element);
+    }
