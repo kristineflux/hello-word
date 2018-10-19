@@ -1,0 +1,60 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
+public class BasePage {
+
+    protected WebDriver driver;
+    public static String baseURL = "http://dev.ottomatik.fluxtechs.com";
+
+    public BasePage(WebDriver webDriver) {
+        this.driver = webDriver;
+    }
+
+    public void visit(String url) {
+        driver.get(url);
+    }
+
+    protected WebElement find(By locator) {
+        return driver.findElement(locator);
+    }
+
+    protected List<WebElement> findElements(By locator) {
+        return driver.findElements(locator);
+    }
+
+    protected void click(By locator) {
+        click(find(locator));
+    }
+
+    protected void click(WebElement element) {
+        element.click();
+    }
+
+    protected void type(By locator, String text) {
+        WebElement element = find(locator);
+        element.clear();
+        type(element, text);
+    }
+
+    protected void type(WebElement element, String text) {
+        element.clear();
+        element.sendKeys(text);
+    }
+
+    protected boolean isDisplayed(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+}
