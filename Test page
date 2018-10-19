@@ -45,3 +45,49 @@ public class OttomatikSignUpPage extends BasePage {
         WebElement element = find(OttomatikSignUpPageLocators.signup);
         return isDisplayed(element);
     }
+
+
+
+
+
+
+    public void EnterSubDomain(String text) {
+        type(OttomatikSignUpPageLocators.subdomain, text);
+    }
+
+    public void EnterEmail(String text) {
+        WebElement element = find(OttomatikSignUpPageLocators.email);
+        type(OttomatikSignUpPageLocators.email, text);
+    }
+
+    public void EnterPassword(String text) {
+        WebElement element = find(OttomatikSignUpPageLocators.password);
+        type(OttomatikSignUpPageLocators.password, text);
+    }
+
+    public void ClickCheckbox() {
+        WebElement element = find(OttomatikSignUpPageLocators.checkbox);
+        element.click();
+    }
+
+    public void ClickSignUpButton() {
+        WebElement element = find(OttomatikSignUpPageLocators.signup);
+        element.click();
+    }
+
+    public boolean isSubdomainErrorDisplayed() {
+        WebElement element = find(OttomatikSignUpPageLocators.subdomainerror);
+        return isDisplayed(element);
+    }
+
+    public String getSubdomainErrorText() {
+        WebElement element = find(OttomatikSignUpPageLocators.subdomainerror);
+        return element.getText();
+    }
+
+
+    public void clickSignInButton() {
+        WebElement element = find(OttomatikSignUpPageLocators.signin);
+        element.click();
+
+    }
